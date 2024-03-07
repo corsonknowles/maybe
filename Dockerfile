@@ -25,7 +25,11 @@ FROM base as build
 RUN apt-get install --no-install-recommends -y build-essential git libpq-dev pkg-config
 
 # Install application gems
+<<<<<<< HEAD
 COPY .ruby-version Gemfile Gemfile.lock ./
+=======
+COPY Gemfile Gemfile.lock ./ .ruby-version
+>>>>>>> e9f2a02 (Copy Ruby Version file into Docker)
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
