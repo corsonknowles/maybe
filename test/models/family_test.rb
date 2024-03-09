@@ -30,6 +30,12 @@ class FamilyTest < ActiveSupport::TestCase
     end
   end
 
+  test "should destroy dependent transaction categories" do
+    assert_difference("Transaction::Category.count", -@family.transaction_categories.count) do
+      @family.destroy
+    end
+  end
+
   test "should calculate total assets" do
     assert_equal BigDecimal("25550"), @family.assets
   end
@@ -40,6 +46,22 @@ class FamilyTest < ActiveSupport::TestCase
 
   test "should calculate net worth" do
     assert_equal BigDecimal("24550"), @family.net_worth
+  end
+
+  test "should exclude disabled accounts from calculations" do
+    assets_before = @family.assets
+    liabilities_before = @family.liabilities
+    net_worth_before = @family.net_worth
+
+    disabled_checking = accounts(:checking)
+    disabled_cc = accounts(:credit_card)
+
+    disabled_checking.update!(is_active: false)
+    disabled_cc.update!(is_active: false)
+
+    assert_equal assets_before - disabled_checking.balance, @family.assets
+    assert_equal liabilities_before - disabled_cc.balance, @family.liabilities
+    assert_equal net_worth_before - disabled_checking.balance + disabled_cc.balance, @family.net_worth
   end
 
   test "calculates asset series" do
@@ -104,6 +126,23 @@ class FamilyTest < ActiveSupport::TestCase
       },
       expected_liability_groups: {
         "Account::Credit" => { end_balance: BigDecimal("1000"), start_balance: BigDecimal("990"), allocation: 100 }
+      }
+    )
+  end
+
+  test "calculates balances by type with disabled account" do
+    disabled_checking = accounts(:checking).update!(is_active: false)
+
+    verify_balances_by_type(
+      period: Period.all,
+      expected_asset_total: BigDecimal("20550"),
+      expected_liability_total: BigDecimal("1000"),
+      expected_asset_groups: {
+        "Account::OtherAsset" => { end_balance: BigDecimal("550"), start_balance: BigDecimal("400"), allocation: 2.68 },
+        "Account::Depository" => { end_balance: BigDecimal("20000"), start_balance: BigDecimal("21250"), allocation: 97.32 }
+      },
+      expected_liability_groups: {
+        "Account::Credit" => { end_balance: BigDecimal("1000"), start_balance: BigDecimal("1040"), allocation: 100 }
       }
     )
   end
