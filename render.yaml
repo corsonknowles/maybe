@@ -1,5 +1,5 @@
 databases:
-  - name: maybe
+  - name: maybe_production
     databaseName: maybe_production
     user: maybe
     plan: free
