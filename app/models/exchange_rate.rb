@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: exchange_rates
+#
+#  id                 :uuid             not null, primary key
+#  base_currency      :string           not null
+#  converted_currency :string           not null
+#  rate               :decimal(, )
+#  date               :date
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
 class ExchangeRate < ApplicationRecord
   def self.convert(from, to, amount)
     return amount unless EXCHANGE_RATE_ENABLED
