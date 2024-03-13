@@ -1,0 +1,93 @@
+d@MacBook-Air-2 maybe % bundle exec rails console
+Loading development environment (Rails 7.2.0.alpha)
+maybe(dev)> a = GemBench.check({verbose: true})
+(irb):1:in `<main>': uninitialized constant GemBench (NameError)
+
+a = GemBench.check({verbose: true})
+    ^^^^^^^^
+maybe(dev)> require 'gembench'
+/Users/d/.rbenv/versions/3.3.0/lib/ruby/3.3.0/bundled_gems.rb:74:in `require': cannot load such file -- gembench (LoadError)
+Did you mean?  gem_bench
+maybe(dev)> require 'gem_bench'
+=> true
+maybe(dev)> a = GemBench.check({verbose: true})
+/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/gem_bench-2.0.0/lib/gem_bench.rb:30:in `check': wrong number of arguments (given 1, expected 0) (ArgumentError)
+maybe(dev)> a = GemBench.check verbose:true
+[GemBench] Will search for gems in ["/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems", "/Users/d/.gem/ruby/3.3.0/gems", "/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems"]
+[GemBench] Will check Gemfile at /Users/d/Documents/GitHub/maybe/Gemfile.
+[GemBench] Detected 130 loaded gems + 2 loaded gems which GemBench is configured to ignore.
+[GemBench] We found a Rails::Railtie or Rails::Engine in the following files. However, it is possible that there are false positives, so you may want to verify that this is the case.
+
+	rails-dom-testing:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/rails-dom-testing-2.2.0/lib/rails/dom/testing/railtie.rb:98
+	globalid:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/globalid-1.2.1/lib/global_id/railtie.rb:304
+	better_html:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/better_html-2.0.2/lib/better_html/railtie.rb:101
+	dotenv:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/dotenv-3.1.0/lib/dotenv/rails.rb:814
+	good_job:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/good_job-3.26.1/lib/good_job/engine.rb:96
+	hotwire-livereload:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/hotwire-livereload-1.3.1/lib/hotwire/livereload/engine.rb:120
+	rails-i18n:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/rails-i18n-7.0.8/lib/rails_i18n/railtie.rb:54
+	importmap-rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/importmap-rails-2.0.1/lib/importmap/engine.rb:166
+	inline_svg:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/inline_svg-1.9.0/lib/inline_svg/railtie.rb:61
+	letter_opener:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/letter_opener-1.9.0/lib/letter_opener/railtie.rb:38
+	lucide-rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/bundler/gems/lucide-rails-6170b3a0eceb/lib/lucide-rails/railtie.rb:68
+	propshaft:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/propshaft-0.8.0/lib/propshaft/railtie.rb:128
+	rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/rails-dom-testing-2.2.0/lib/rails/dom/testing/railtie.rb:98
+	ruby-lsp:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/ruby-lsp-rails-0.3.2/lib/ruby_lsp_rails/railtie.rb:116
+	ruby-lsp-rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/ruby-lsp-rails-0.3.2/lib/ruby_lsp_rails/railtie.rb:116
+	stimulus-rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/stimulus-rails-1.3.3/lib/stimulus/engine.rb:35
+	tailwindcss-rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/tailwindcss-rails-2.3.0-arm64-darwin/lib/tailwindcss/engine.rb:55
+	turbo-rails:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/turbo-rails-2.0.4/lib/turbo/engine.rb:54
+	web-console:
+		/Users/d/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/web-console-4.2.1/lib/web_console/railtie.rb:94
+[GemBench] If you want to check for false positives, the files to check for Railties and Engines are listed above.
+[GemBench] 19 out of 130 evaluated gems actually need to be loaded at boot time. They are:
+	[INFO] 1) gem 'rails-dom-testing', '~> 2.2'
+	[INFO] 2) gem 'globalid', '~> 1.2'
+	[INFO] 3) gem 'better_html', '~> 2.0'
+	[INFO] 4) gem 'dotenv', '~> 3.1'
+	[INFO] 5) gem 'good_job', '~> 3.26'
+	[INFO] 6) gem 'hotwire-livereload', '~> 1.3'
+	[INFO] 7) gem 'rails-i18n', '~> 7.0'
+	[INFO] 8) gem 'importmap-rails', '~> 2.0'
+	[INFO] 9) gem 'inline_svg', '~> 1.9'
+	[INFO] 10) gem 'letter_opener', '~> 1.9'
+	[INFO] 11) gem 'lucide-rails', '~> 0.2'
+	[INFO] 12) gem 'propshaft', '~> 0.8'
+	[INFO] 13) gem 'rails', '~> 7.2'
+	[INFO] 14) gem 'ruby-lsp', '~> 0.14'
+	[INFO] 15) gem 'ruby-lsp-rails', '~> 0.3'
+	[INFO] 16) gem 'stimulus-rails', '~> 1.3'
+	[INFO] 17) gem 'tailwindcss-rails', '~> 2.3'
+	[INFO] 18) gem 'turbo-rails', '~> 2.0'
+	[INFO] 19) gem 'web-console', '~> 4.2'
+[GemBench] Evaluated 130 gems and Gemfile at /Users/d/Documents/GitHub/maybe/Gemfile.
+[GemBench] Here are 11 suggestions for improvement:
+	[SUGGESTION] 1) gem 'bcrypt', '~> 3.1', require: false
+	[SUGGESTION] 2) gem 'capybara', '~> 3.40', require: false
+	[SUGGESTION] 3) gem 'debug', '~> 1.9', require: false
+	[SUGGESTION] 4) gem 'dotenv-rails', '~> 3.1', require: false
+	[SUGGESTION] 5) gem 'faraday', '~> 2.9', require: false
+	[SUGGESTION] 6) gem 'i18n-tasks', '~> 1.0', require: false
+	[SUGGESTION] 7) gem 'pagy', '~> 7.0', require: false
+	[SUGGESTION] 8) gem 'pg', '~> 1.5', require: false
+	[SUGGESTION] 9) gem 'puma', '~> 6.4', require: false
+	[SUGGESTION] 10) gem 'redis', '~> 5.1', require: false
+	[SUGGESTION] 11) gem 'selenium-webdriver', '~> 4.18', require: false
+=>

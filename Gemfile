@@ -36,6 +36,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "faraday"
 gem "pagy"
 
+gem "gem_bench", :group => :console
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "brakeman", require: false
@@ -46,6 +48,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "annotate"
   gem "web-console"
   gem "hotwire-livereload"
   gem "ruby-lsp-rails"
