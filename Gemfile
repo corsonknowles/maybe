@@ -36,15 +36,16 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "faraday"
 gem "pagy"
 
-gem "gem_bench", :group => :console
+gem "gem_bench", group: :console
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ]
   gem "brakeman", require: false
-  gem "rubocop-rails-omakase", require: false
+  gem "debug", platforms: %i[ mri windows ]
   gem "dotenv-rails"
-  gem "letter_opener"
   gem "i18n-tasks"
+  gem "letter_opener"
+  gem "rspec-rails"
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
