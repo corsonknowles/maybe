@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: invite_codes
+#
+#  id         :uuid             not null, primary key
+#  token      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class InviteCode < ApplicationRecord
   before_validation :generate_token, on: :create
 

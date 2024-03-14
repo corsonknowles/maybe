@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: transaction_categories
+#
+#  id                :uuid             not null, primary key
+#  name              :string           not null
+#  color             :string           default("#6172F3"), not null
+#  internal_category :string
+#  family_id         :uuid             not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 class Transaction::Category < ApplicationRecord
   has_many :transactions
   belongs_to :family

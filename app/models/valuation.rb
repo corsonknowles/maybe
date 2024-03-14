@@ -1,7 +1,23 @@
+# == Schema Information
+#
+# Table name: valuations
+#
+#  id         :uuid             not null, primary key
+#  account_id :uuid             not null
+#  date       :date             not null
+#  value      :decimal(19, 4)   not null
+#  currency   :string           default("USD"), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Valuation < ApplicationRecord
   belongs_to :account
 
   after_commit :sync_account
+
+  before_save do
+    self.value = BigDecimal(self.value)
+  end
 
   scope :in_period, ->(period) { period.date_range.nil? ? all : where(date: period.date_range) }
 
