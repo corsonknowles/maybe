@@ -15,6 +15,10 @@ class Valuation < ApplicationRecord
 
   after_commit :sync_account
 
+  before_save do
+    self.value = BigDecimal(self.value)
+  end
+
   scope :in_period, ->(period) { period.date_range.nil? ? all : where(date: period.date_range) }
 
   def self.to_series(account, period = Period.all)
