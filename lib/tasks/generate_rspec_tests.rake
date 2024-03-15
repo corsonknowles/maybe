@@ -20,5 +20,5 @@ namespace :generate_rspec do
   end
 
   desc "Generate RSpec tests for both models and controllers"
-  task all: [:models, :controllers]
+  task all: [ :models, :controllers ]
 end
