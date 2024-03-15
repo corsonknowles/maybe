@@ -14,6 +14,8 @@ class Transaction::Category < ApplicationRecord
   has_many :transactions
   belongs_to :family
 
+  validates :name, :color, :family, presence: true
+
   before_update :clear_internal_category, if: :name_changed?
 
   DEFAULT_CATEGORIES = [

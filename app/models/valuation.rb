@@ -13,6 +13,8 @@
 class Valuation < ApplicationRecord
   belongs_to :account
 
+  validates :account, :date, :value, presence: true
+
   after_commit :sync_account
 
   before_save do
